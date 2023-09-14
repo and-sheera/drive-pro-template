@@ -1,0 +1,22 @@
+extends ../../layout/layout
+
+block variables
+  -
+    const pageName = 'main'
+    const pageTitle = 'Main'
+
+block content
+  main.main
+    .inner
+      +section('--mt0')
+        +banner
+      +section('--mt-s')
+        +brands
+      +section('--mt-s, --mob-mt-l')
+        +goods
+      +section
+        +contacts
+    +popup#popup-reservation
+      +form('Забронировать Picanto, KIA, Хетчбек', 'Оставьте свои контакты, и наш специалист свяжется с вами в течении 1 часа для уточнения деталей')
+    +popup('--max-w-s')#thx-popup
+      +form-thx

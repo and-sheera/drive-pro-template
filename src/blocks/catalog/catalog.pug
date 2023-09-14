@@ -1,0 +1,32 @@
+mixin catalog(mods)
+  -
+    const baseName = 'catalog'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .catalog(class=allMods)&attributes(attributes)
+    .catalog-filter
+      .catalog-filter__button Фильтр
+      form.catalog-filter__inner
+        button.catalog-filter__close(type='button')
+        .catalog-filter__title Фильтр
+        .catalog-filter__main
+          .catalog-filter__body
+            -for(let i=0; i<6; i++)
+              .catalog-filter__section
+                .catalog-filter__name Kia
+                .catalog-filter__dropdown
+                  +ui-checkbox(`check_1-${i}`, 'picanto (4)')
+                  +ui-checkbox(`check_2-${i}`, 'Sorento (1)')
+                  +ui-checkbox(`check_3-${i}`, 'Sonet (1)')
+                  +ui-checkbox(`check_4-${i}`, 'Pegas (2)')
+                  +ui-checkbox(`check_5-${i}`, 'K5 (4)')
+          +ui-button('Показать', 'catalog-filter')(type='submit')
+    +goods(9, 'catalog, --cols-3')
+    block

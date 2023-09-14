@@ -1,0 +1,40 @@
+-
+  const menu = [
+    {
+      text: 'Каталог',
+      href: 'catalog.html'
+    },
+    {
+      text: 'О&nbsp;компании',
+      href: 'about.html'
+    },
+    {
+      text: 'FAQ',
+      href: 'faq.html'
+    },
+    {
+      text: 'Контакты',
+      href: 'contacts.html'
+    },
+  ]
+
+header.header
+  .inner.header__inner
+    button.header__burger-button
+      span
+      span
+    a.header__logo(href='/')
+      img(src='../../images/logo.svg' alt='')
+    .header__burger
+      ul.header__menu
+        each item in menu
+          li.header__item
+            a.header__link(href=item.href class=(pageTitle === item.text ? 'header__link--active' : '')) !{item.text}
+    .header__links
+      .header__lang Ru
+        .header__lang-dropdown
+          a.header__lang-item(href='#') Ru
+          a.header__lang-item(href='#') Eng
+      a.header__contact(href='tel:+971000000000')
+        +ui-svg('icon_tel')
+        | +971 00 000 0000

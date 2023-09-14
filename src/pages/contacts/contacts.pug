@@ -1,0 +1,20 @@
+extends ../../layout/layout
+
+block variables
+  -
+    const pageName = 'contacts'
+    const pageTitle = 'Контакты'
+
+block content
+  main.main.main--bg.main--m-pb0
+    .inner
+      +breadcrumbs
+        +breadcrumbs__item('Главная', '/')
+        +breadcrumbs__item('Контакты')
+      +section('--mt-s')
+        +contacts('--detail')
+      +section
+        +form-wrapper
+          +form('Остались вопросы?', 'Оставьте свои контакты, и наш специалист свяжется с вами в течении 1 часа')
+    +popup('--max-w-s')#thx-popup
+      +form-thx

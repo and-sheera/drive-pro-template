@@ -1,0 +1,11 @@
+.form-thx {
+  position: relative;
+  text-align: center;
+  &__title {
+    font-weight: 700;
+    font-size: 20px;
+    @include media-tablet {
+      font-size: 18px;
+    }
+  }
+}

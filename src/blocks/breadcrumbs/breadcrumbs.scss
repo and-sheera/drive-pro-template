@@ -1,0 +1,33 @@
+.breadcrumbs {
+  display: flex;
+  gap: 6px;
+  align-items: baseline;
+  @include media-tablet {
+    overflow-y: auto;
+    scrollbar-width: 0;
+  }
+  &::-webkit-scrollbar {
+    @include media-tablet {
+      display: none;
+      width: 0;
+      height: 0;
+    }
+  }
+  &__item {
+    position: relative;
+    display: flex;
+    align-items: baseline;
+    gap: inherit;
+    font-size: 10px;
+    white-space: nowrap;
+    color: $greyText;
+    &::after {
+      content: '/';
+    }
+    &:last-child {
+      &::after {
+        display: none;
+      }
+    }
+  }
+}

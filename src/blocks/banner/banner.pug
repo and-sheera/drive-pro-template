@@ -1,0 +1,19 @@
+mixin banner(mods)
+  -
+    const baseName = 'banner'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .banner(class=allMods)&attributes(attributes)
+    .banner__img: img(src='../../images/banner_car.png' alt='')
+    .banner__bg: img(src='../../images/banner_bg.png' alt='')
+    .banner__content
+      h1.banner__h1 Аренда Автомобилей в&nbsp;Дубай
+      +ui-button('Забронировать', 'banner')(href='#')
+    block

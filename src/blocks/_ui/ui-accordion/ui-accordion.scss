@@ -1,0 +1,64 @@
+.ui-accordion {
+  max-width: 925px;
+  margin: 0 auto;
+  &:not(:last-child) {
+    border-bottom: 1px solid rgb(255 255 255 / 0.10);;
+  }
+  &__head {
+    position: relative;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.2;
+    padding: 20px 40px 22px 0;
+    cursor: pointer;
+    transition: 0.3s;
+    @include media-laptop {
+      padding-right: 30px;
+    }
+    @include media-tablet {
+      padding-bottom: 20px;
+      font-size: 16px;
+    }
+    &::after,
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      width: 30px;
+      height: 30px;
+      background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 15H28' stroke='white'/%3E%3C/svg%3E%0A");
+      background-size: contain;
+      background-repeat: no-repeat;
+      transition: 0.4s;
+      @include media-laptop {
+        width: 20px;
+        height: 20px;
+      }
+    }
+    &::after {
+      transform: translateY(-50%) rotate(90deg);
+    }
+    &--active {
+      &::after {
+        transform: translateY(-50%);
+      }
+    }
+  }
+  &__body {
+    display: none;
+    padding-bottom: 20px;
+  }
+  &__text {
+    font-size: 16px;
+    line-height: 1.5;
+    color: $greyText;
+    @include media-tablet {
+      font-size: 14px;
+    }
+    a {
+      text-decoration: underline;
+    }
+  }
+}

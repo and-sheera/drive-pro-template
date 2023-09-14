@@ -1,0 +1,24 @@
+mixin form(title, subtitle, mods)
+  -
+    const baseName = 'form'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  form.form(class=allMods data-thx-popup='thx-popup')&attributes(attributes)
+    .form__head
+      h3.form__title !{title}
+      .form__subtitle !{subtitle}
+    .form__body
+      +ui-input('name')(required data-parsley-error-message='Заполните обязательные поля' placeholder='Имя' )
+      +ui-input('tel')(data-mask='phone' required data-parsley-error-message='Заполните обязательные поля' placeholder='+7 (___) ___-__-__' )
+      +ui-button('Забронировать', 'form')(type='submit')
+      .form__footnote Нажимая кнопку «Отправить», Вы принимаете условия
+        =' '
+        a(href='#' target='_blank') Пользовательского соглашения
+    block

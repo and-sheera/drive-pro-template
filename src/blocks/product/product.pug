@@ -1,0 +1,97 @@
+mixin product(mods)
+  -
+    const baseName = 'product'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+    const photos = [
+      '../../images/product-1.png',
+      '../../images/product-2.png',
+      '../../images/product-3.png',
+      '../../images/product-4.png',
+      '../../images/product-5.png',
+      '../../images/product-1.png',
+      '../../images/product-2.png',
+      '../../images/product-3.png',
+      '../../images/product-4.png',
+      '../../images/product-5.png'
+    ]
+
+  .product(class=allMods)&attributes(attributes)
+    .product__gallery
+      .product__slider
+        .swiper-wrapper
+          each img in photos
+            .product__slide.swiper-slide
+              img(src=img, alt='')
+        .product__btn.product__btn--prev
+        .product__btn.product__btn--next
+      .product__thumbs
+        .swiper-wrapper
+          each img in photos
+            .product__slide.swiper-slide
+              img(src=img, alt='')
+    .product__info
+      +ui-title('CX5', 'product')
+      .product__model MAZDA, SUV
+      .product__section.product__section--border
+        .product__title Характеристики
+        .product__features
+          .product__feature Bluetooth
+          .product__feature Car Play
+          .product__feature Isofix
+          .product__feature Power Door
+          .product__feature USB
+          .product__feature Камера заднего вида
+          .product__feature Кнопочный запуск
+          .product__feature Круиз-контроль
+          .product__feature Кузов: SUV
+          .product__feature Парктроники
+          .product__feature Депозит 1,500 AED
+          .product__feature Excess 1,700 AED
+        .product__features.product__features--icons
+          .product__feature(title='Вместимость') 4
+            +ui-svg('icon_man')
+          .product__feature(title='Вместимость багажника') 3
+            +ui-svg('icon_baggage')
+          .product__feature(title='Двери') 5
+            +ui-svg('icon_door')
+          .product__feature(title='Кондиционер')
+            +ui-svg('icon_conditioner')
+          .product__feature(title='A')
+            +ui-svg('icon_a')
+      form.product__section
+        .product__title Стоимость аренды
+        .product__price
+          .product__radio
+            input(type='radio' name='price' checked)#day
+            label(for='day')
+              .product__time День
+              .product__value 99
+              .product__currency AED
+          .product__radio
+            input(type='radio' name='price')#week
+            label(for='week')
+              .product__time Неделя
+              .product__value 623
+              .product__currency AED
+          .product__radio
+            input(type='radio' name='price')#month
+            label(for='month')
+              .product__time Месяц
+              .product__value 1,599
+              .product__currency AED
+        +ui-button('Забронировать', 'product')(data-popup-open href='#popup-reservation')
+      .product__section.product__section--border
+        .product__title Описание
+        .product__desc
+          p Внедорожник CX5 Mazda - отличный вариант для тех, кто хочет увидеть весь Дубай в их отпуске. Этот внедорожник отлично подходит для гастролей по Дубаю, так как он имеет высокий просмотр и четырехколесный привод. Он также поставляется с такими технологиями, как Bluetooth и спутниковое радио, камера заднего вида и многое другое.
+          p Что касается безопасности, этот внедорожник оснащен передними и боковыми подушками безопасности, антиблокированными тормозами (ABS), управлением тягой (TCS) и электронными управлением стабильностью (ESC), которые работают вместе, чтобы помочь вашему автомобилю не выходить из-под контроля. Когда торможение внезапно или поворачивается слишком резко.
+          p Итак, исследуйте город Золотой Бесплатные Службы проката автомобилей. Вы можете связаться с нашими дружелюбными сотрудниками, чтобы узнать о наших ежедневных, еженедельных или ежемесячных арендных пакетах.
+    block

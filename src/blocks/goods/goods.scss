@@ -1,0 +1,141 @@
+.goods {
+  --cols: 4;
+
+  position: relative;
+  display: grid;
+  align-items: start;
+  align-content: start;
+  grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+  gap: 20px;
+  @include media-laptop {
+    --cols: 2;
+
+    gap: 10px;
+  }
+  @include media-tablet {
+    --cols: 1;
+
+    gap: 20px;
+  }
+  &__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background: linear-gradient(0deg, rgb(31 31 31 / 1) 0%, rgb(155 155 155 / 1) 100%);
+    border-radius: 10px;
+    &::before {
+      position: absolute;
+      z-index: 0;
+      background: #353535;
+      border-radius: 9px;
+      content: '';
+      inset: 1px;
+    }
+    > * {
+      position: relative;
+      z-index: 1;
+    }
+  }
+  &__img {
+    position: relative;
+    margin-bottom: 20px;
+    &::before {
+      content: '';
+      display: block;
+      width: 100%;
+      padding-bottom: 81%;
+    }
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  &__info {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-content: start;
+    align-items: start;
+    gap: 20px;
+    &:not(:last-child) {
+      margin-bottom: 27px;
+    }
+  }
+  &__title {
+    font-size: 18px;
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+  &__name {
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  &__features {
+    display: grid;
+    align-items: start;
+    gap: 12px;
+    &--icons {
+      .goods__feature {
+        justify-content: end;
+      }
+    }
+  }
+  &__feature {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 14px;
+    color: $greyText;
+    .ui-svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  &__prices {
+    display: flex;
+    gap: 40px;
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+  &__price {
+    font-size: 14px;
+    color: $greyText;
+  }
+  &__time {
+    margin-bottom: 14px;
+  }
+  &__value {
+    font-weight: 700;
+    font-size: 18px;
+    color: $white;
+  }
+  &__ui-button {
+    margin-top: auto;
+  }
+  &__foot {
+    grid-column: 1/-1;
+    margin-top: 20px;
+    text-align: center;
+    @include media-laptop {
+      margin-top: 10px;
+    }
+    @include media-tablet {
+      margin-top: 0;
+    }
+  }
+  &--cols-3 {
+    --cols: 3;
+    @include media-laptop {
+      --cols: 2;
+    }
+    @include media-tablet {
+      --cols: 1;
+    }
+  }
+}

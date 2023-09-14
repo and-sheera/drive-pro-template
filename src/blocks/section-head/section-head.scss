@@ -1,0 +1,13 @@
+.section-head {
+  position: relative;
+  text-align: center;
+  &:not(:last-child) {
+    margin-bottom: 40px;
+    @include media-tablet {
+      margin-bottom: 30px;
+    }
+    @include media-tablet {
+      margin-bottom: 20px;
+    }
+  }
+}

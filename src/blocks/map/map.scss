@@ -1,0 +1,12 @@
+.map {
+  position: relative;
+  &__marker {
+    width: 33px;
+    height: 33px;
+    background-color: $white;
+    border: 8px solid $blue;
+    border-radius: 50%;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+  }
+}

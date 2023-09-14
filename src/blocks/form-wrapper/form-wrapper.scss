@@ -1,0 +1,18 @@
+.form-wrapper {
+  max-width: 566px;
+  margin: 0 auto;
+  padding: 40px 65px 60px;
+  background: $white;
+  color: $blackText;
+  border-radius: 20px;
+  @include media-laptop {
+    max-width: 466px;
+    padding: 40px 20px 35px;
+  }
+  @include media-tablet {
+    max-width: unset;
+    margin: 0 -20px;
+    padding: 30px 20px 48px;
+    border-radius: 0;
+  }
+}

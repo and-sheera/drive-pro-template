@@ -1,0 +1,16 @@
+extends ../../layout/layout
+
+block variables
+  -
+    const pageName = 'catalog'
+    const pageTitle = 'Каталог'
+
+block content
+  main.main
+    .inner
+      +breadcrumbs
+        +breadcrumbs__item('Главная', '/')
+        +breadcrumbs__item('Каталог')
+      +section('--mt-xs')
+        +section-head: +ui-title('Каталог')
+        +catalog

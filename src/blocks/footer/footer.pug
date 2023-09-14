@@ -1,0 +1,16 @@
+footer.footer
+  .inner.footer__inner
+    a.footer__logo(href='/')
+      img(src='../../images/logo.svg' alt='')
+    ul.footer__menu
+      each item in menu
+        li.footer__item
+          a.footer__link(href=item.href) !{item.text}
+    .footer__contacts
+      .footer__contact.footer__contact--xl
+        +ui-svg('icon_phone')
+        a(href='tel:+971000000000')
+          b +971 00 000 0000
+      .footer__contact
+        +ui-svg('icon_map')
+        |  1708 Al Ameri Tower, Barsha Heights, Dubai, UAE

@@ -1,0 +1,24 @@
+mixin brands(mods)
+  -
+    const baseName = 'brands'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+    const data = [
+      '../../images/brands_1.svg',
+      '../../images/brands_2.svg',
+      '../../images/brands_3.svg',
+      '../../images/brands_4.svg',
+      '../../images/brands_5.svg',
+    ]
+
+  .brands(class=allMods)&attributes(attributes)
+    each item in data
+      .brands__item: img(src=item alt='')
+    block

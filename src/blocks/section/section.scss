@@ -1,0 +1,33 @@
+.section {
+  position: relative;
+  margin-top: 60px;
+  @include media-laptop {
+    margin-top: 40px;
+  }
+  @include media-tablet {
+    margin-top: 30px;
+  }
+  &--mt0 {
+    margin-top: 0;
+  }
+  &--mt-s {
+    margin-top: 40px;
+    @include media-laptop {
+      margin-top: 30px;
+    }
+    @include media-tablet {
+      margin-top: 25px;
+    }
+  }
+  &--mt-xs {
+    margin-top: 20px;
+    @include media-laptop {
+      margin-top: 18px;
+    }
+  }
+  &--mob-mt-l {
+    @include media-tablet {
+      margin-top: 60px;
+    }
+  }
+}

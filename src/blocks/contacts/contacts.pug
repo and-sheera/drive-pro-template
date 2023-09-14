@@ -1,0 +1,47 @@
+mixin contacts(mods)
+  -
+    const baseName = 'contacts'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .contacts(class=allMods)&attributes(attributes)
+    .contacts__content
+      if pageName === 'main'
+        +ui-title('Контакты', 'contacts', 'h2')
+        ul.contacts__list
+          li.contacts__item
+            +ui-svg('icon_map')
+            |  1708 Al Ameri Tower, Barsha Heights, Dubai, UAE
+          li.contacts__item
+            +ui-svg('icon_phone')
+            a(href='tel:+971000000000')
+              b +971 00 000 0000
+        +ui-button('Перезвонить мне', 'contacts')(data-popup-open href='#popup-reservation')
+      else
+        +ui-title('Контакты', 'contacts')
+        ul.contacts__list
+          li.contacts__item
+            +ui-svg('icon_map')
+            |  1708 Al Ameri Tower, Barsha Heights, Dubai, UAE
+          li.contacts__item
+            +ui-svg('icon_phone')
+            a(href='tel:+971000000000')
+              b +971 00 000 0000
+          li.contacts__item
+            +ui-svg('icon_email')
+            a(href='mailto:rent@yetiuae.com') rent@yetiuae.com
+        .contacts__schedule
+          .contacts__schedule-title Часы работы:
+          .contacts__schedule-text
+            p Воскресенье по Четверг – 9:00-19:00
+            p Суббота – 10:00-17:00
+            p Пятница – 9:00-17:00
+
+    +map('contacts')(data-center='52.223080, 55.735236' data-zoom='10' data-markers='52.223080, 55.735236')
+    block

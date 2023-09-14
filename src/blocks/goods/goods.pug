@@ -1,0 +1,54 @@
+mixin goods(num = 12, mods)
+  -
+    const baseName = 'goods'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .goods(class=allMods)&attributes(attributes)
+    -for(let i=0; i<num; i++)
+      .goods__card
+        .goods__img: img(src='../../images/car.png' alt='')
+        .goods__info
+          .goods__about
+            .goods__title
+              .goods__name picanto
+              .goods__model Kia, Хетчбек
+            .goods__features
+              .goods__feature AUX
+              .goods__feature Двигатель: 1.5L
+              .goods__feature Электрические стеклоподъемники
+          .goods__features.goods__features--icons
+            .goods__feature(title='Вместимость') 4
+              +ui-svg('icon_man')
+            .goods__feature(title='Вместимость багажника') 1
+              +ui-svg('icon_baggage')
+            .goods__feature(title='Двери') 5
+              +ui-svg('icon_door')
+            .goods__feature(title='Кондиционер')
+              +ui-svg('icon_conditioner')
+            .goods__feature(title='A')
+              +ui-svg('icon_a')
+        .goods__prices
+          .goods__price
+            .goods__time День
+            .goods__value 99
+            .goods__currency AED
+          .goods__price
+            .goods__time Неделя
+            .goods__value 623
+            .goods__currency AED
+          .goods__price
+            .goods__time Месяц
+            .goods__value 1,599
+            .goods__currency AED
+        +ui-button('Забронировать', 'goods')(href='detail.html')
+    if (pageName === 'main')
+      .goods__foot
+        +ui-button('Перейти в каталог', '--outline')(href='catalog.html')
+    block

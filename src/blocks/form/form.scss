@@ -1,0 +1,36 @@
+.form {
+  &__head {
+    text-align: center;
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+  &__title {
+    max-width: 375px;
+    margin: 0 auto;
+    font-weight: 700;
+    font-size: 30px;
+    @include media-tablet {
+      font-size: 20px;
+    }
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+  &__subtitle {
+    font-size: 16px;
+    @include media-tablet {
+      font-size: 14px;
+    }
+  }
+  &__body {
+    max-width: 333px;
+    margin: 0 auto;
+    display: grid;
+    gap: 10px;
+  }
+  &__footnote {
+    font-size: 10px;
+    color: #9B9EA1;
+  }
+}

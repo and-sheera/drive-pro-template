@@ -1,0 +1,62 @@
+.ui-checkbox {
+  position: relative;
+  input {
+    display: none;
+    &:checked + label {
+      &::before {
+        background: $blue;
+      }
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+  label {
+    display: flex;
+    align-items: center;
+    min-height: 20px;
+    position: relative;
+    padding-left: 30px;
+    font-size: 16px;
+    color: $greyText;
+    cursor: pointer;
+    user-select: none;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      border: 1px solid $white;
+      border-radius: 3px;
+      transition: 0.3s;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.3335 10L9.3335 13.3333L14.6668 6.66667' stroke='white'/%3E%3C/svg%3E%0A");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      opacity: 0;
+      transition: 0.3s;
+    }
+    a {
+      display: inline;
+      text-decoration: underline;
+      color: teal;
+    }
+  }
+  .just-validate-error-label {
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
+}

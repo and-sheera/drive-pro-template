@@ -1,0 +1,11 @@
+@import '../../node_modules/normalize.css/normalize.css';
+@import '../../node_modules/swiper/swiper-bundle.min.css';
+@import 'utils/variables';
+@import 'utils/media';
+@import 'utils/fonts';
+@import '../layout/layout';
+
+
+// BLOCKS
+
+@import '../blocks/**/*';

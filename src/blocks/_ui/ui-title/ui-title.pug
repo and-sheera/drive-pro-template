@@ -1,0 +1,19 @@
+mixin ui-title(text, mods, tag)
+  -
+    const baseName = 'ui-title'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  case tag
+    when 'h2'
+      h2.ui-title(class=allMods)&attributes(attributes) !{text}
+        block
+    default
+      h1.ui-title(class=allMods)&attributes(attributes) !{text}
+        block

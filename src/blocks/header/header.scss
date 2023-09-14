@@ -1,0 +1,190 @@
+.header {
+  position: relative;
+  z-index: 100;
+  flex: 0 1;
+  padding: 7px 0;
+  &__inner {
+    display: flex;
+    align-items: center;
+    gap: min(9.653vw, 139px);
+    @include media-laptop {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 15px;
+    }
+  }
+  &__burger-button {
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+    width: 20px;
+    padding: 5px 0;
+    background: transparent;
+    border: 0;
+    flex-shrink: 0;
+    cursor: pointer;
+    @include media-laptop {
+      display: flex;
+    }
+    span {
+      width: 100%;
+      height: 1px;
+      background: $white;
+      transition: 0.3s;
+      transform-origin: center;
+    }
+  }
+  &__logo {
+    width: 97px;
+    height: 30px;
+    flex-shrink: 0;
+  }
+  &__burger {
+    @include media-laptop {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: calc(100vh - 100%);
+      background: rgb(0 0 0 / 0.50);
+      visibility: hidden;
+      opacity: 0;
+      transition: 0.3s;
+    }
+  }
+  &__menu {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    @include media-laptop {
+      display: grid;
+      gap: 20px;
+      width: fit-content;
+      padding: 29px 44px 29px 38px;
+      background: $white;
+      background: rgb(255 255 255 / 0.90);
+      border-radius: 0 20px 20px;
+      color: $blackText;
+    }
+  }
+  &__link {
+    font-size: 16px;
+    &--active {
+      font-weight: 700;
+    }
+  }
+  &__links {
+    display: flex;
+    align-items: center;
+    gap: min(3.472vw, 50px);
+    margin-left: auto;
+    @include media-laptop {
+      gap: 40px;
+    }
+    @include media-tablet {
+      gap: 20px;
+    }
+  }
+  &__lang {
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    cursor: pointer;
+    &::after {
+      content: '';
+      width: 15px;
+      height: 15px;
+      background-image: url("data:image/svg+xml,%3Csvg width='15' height='15' viewBox='0 0 15 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.5 6.5L7.5 9.5L10.5 6.5' stroke='white' stroke-linecap='square'/%3E%3C/svg%3E%0A");
+      background-size: contain;
+      background-repeat: no-repeat;
+      flex-shrink: 0;
+    }
+    &:hover {
+      .header__lang-dropdown {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+    &-dropdown {
+      position: absolute;
+      top: calc(100% + 12px);
+      left: -4px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 21px 19px;
+      background: $white;
+      border-radius: 10px;
+      box-shadow: 0 0 15px 0 rgb(0 0 0 / 0.05);
+      visibility: hidden;
+      opacity: 0;
+      transition: 0.3s;
+      cursor: default;
+      &::before {
+        content: '';
+        position: absolute;
+        top: -12px;
+        left: 0;
+        width: 100%;
+        height: 12px;
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 14px;
+        height: 14px;
+        transform: translate(-50%, -50%) rotate(45deg);
+        flex-shrink: 0;
+        background: $white;
+      }
+    }
+    &-item {
+      font-weight: 500;
+      font-size: 16px;
+      text-transform: uppercase;
+      color: $blackText;
+    }
+  }
+  &__contact {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 20px;
+    font-weight: 700;
+    @include media-laptop {
+      gap: 0;
+      font-size: 0;
+    }
+    .ui-svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      @include media-laptop {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+  &--burger {
+    .header {
+      &__burger-button {
+        span {
+          &:first-child {
+            transform: translateY(4px) rotate(-45deg);
+          }
+          &:last-child {
+            transform: translateY(-4px) rotate(45deg);
+          }
+        }
+      }
+      &__burger {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+}

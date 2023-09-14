@@ -1,0 +1,217 @@
+.catalog {
+  position: relative;
+  display: grid;
+  align-items: start;
+  gap: 20px;
+  grid-template-columns: calc((100% - 60px) / 4) 1fr;
+  @include media-laptop {
+    gap: 10px;
+    grid-template-columns: minmax(0, 1fr);
+  }
+  @include media-tablet {
+    gap: 20px;
+  }
+  &-filter {
+    position: sticky;
+    top: 20px;
+    @include media-laptop {
+      position: unset;
+      top: unset;
+      max-width: calc((100% - 10px) / 2);
+      transition: 0.3s;
+    }
+    @include media-tablet {
+      width: fit-content;
+      max-width: unset;
+    }
+    &__button {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 16px;
+      @include media-tablet {
+        display: flex;
+      }
+      &::before {
+        content: '';
+        width: 20px;
+        height: 20px;
+        background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 4.66667L8.66667 4.66667M8.66667 4.66667C8.66667 3.19391 7.47276 2 6 2C4.52724 2 3.33333 3.19391 3.33333 4.66667M8.66667 4.66667C8.66667 6.13943 7.47276 7.33333 6 7.33333C4.52724 7.33333 3.33333 6.13943 3.33333 4.66667M3.33333 4.66667L0 4.66667M20 15.3333L16.6667 15.3333M16.6667 15.3333C16.6667 13.8606 15.4728 12.6667 14 12.6667C12.5272 12.6667 11.3333 13.8606 11.3333 15.3333M16.6667 15.3333C16.6667 16.8061 15.4728 18 14 18C12.5272 18 11.3333 16.8061 11.3333 15.3333M11.3333 15.3333H1.69528e-07' stroke='white'/%3E%3C/svg%3E%0A");
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+    }
+    &__inner {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      background: linear-gradient(0deg, rgb(31 31 31 / 1) 0%, rgb(155 155 155 / 1) 100%);
+      border-radius: 10px;
+      @include media-laptop {
+        padding: 1px
+      }
+      @include media-tablet {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 120;
+        width: 100%;
+        height: 100%;
+        padding: 40px 22px 47px;
+        background: $black;
+        border-radius: 0;
+        overflow-x: auto;
+        visibility: hidden;
+        opacity: 0;
+        transition: 0.3s;
+      }
+      &::before {
+        position: absolute;
+        z-index: 0;
+        background: #404040;
+        border-radius: 9px;
+        content: '';
+        inset: 1px;
+        @include media-tablet {
+          content: none;
+        }
+      }
+      > * {
+        position: relative;
+        z-index: 1;
+      }
+    }
+    &__close {
+      position: absolute;
+      display: none;
+      top: 20px;
+      right: 20px;
+      width: 20px;
+      height: 20px;
+      padding: 0;
+      background-color: transparent;
+      background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 2L18 18M2 18L18 2' stroke='white'/%3E%3C/svg%3E%0A");
+      background-size: contain;
+      background-repeat: no-repeat;
+      border: 0;
+      @include media-tablet {
+        display: block;
+      }
+    }
+    &__title {
+      font-weight: 700;
+      font-size: 20px;
+      margin-bottom: 30px;
+      @include media-laptop {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 0;
+        padding: 20px 30px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      @include media-tablet {
+        margin-bottom: 30px;
+        padding: 0;
+        font-size: 20px;
+        cursor: unset;
+      }
+      &::before,
+      &::after {
+        content: '';
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+        background-size: contain;
+        background-repeat: no-repeat;
+        @include media-tablet {
+          content: none;
+        }
+      }
+      &::before {
+        background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 4.66667L8.66667 4.66667M8.66667 4.66667C8.66667 3.19391 7.47276 2 6 2C4.52724 2 3.33333 3.19391 3.33333 4.66667M8.66667 4.66667C8.66667 6.13943 7.47276 7.33333 6 7.33333C4.52724 7.33333 3.33333 6.13943 3.33333 4.66667M3.33333 4.66667L0 4.66667M20 15.3333L16.6667 15.3333M16.6667 15.3333C16.6667 13.8606 15.4728 12.6667 14 12.6667C12.5272 12.6667 11.3333 13.8606 11.3333 15.3333M16.6667 15.3333C16.6667 16.8061 15.4728 18 14 18C12.5272 18 11.3333 16.8061 11.3333 15.3333M11.3333 15.3333H1.69528e-07' stroke='white'/%3E%3C/svg%3E%0A");
+      }
+      &::after {
+        margin-left: auto;
+        background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 2L18 18M2 18L18 2' stroke='white'/%3E%3C/svg%3E%0A");
+        opacity: 0;
+      }
+    }
+    &__main {
+      @include media-laptop {
+        display: none;
+        padding: 16px 40px 30px 30px;
+        border-top: 1px solid #666;
+      }
+      @include media-tablet {
+        display: block;
+        padding: 0;
+        border-top: 0;
+      }
+    }
+    &__section {
+      &:not(:last-child) {
+        border-bottom: 1px solid #666;
+      }
+    }
+    &__name {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 20px 0 15px;
+      font-size: 16px;
+      cursor: pointer;
+      &::after {
+        content: '';
+        width: 15px;
+        height: 15px;
+        flex-shrink: 0;
+        background-image: url("data:image/svg+xml,%3Csvg width='15' height='15' viewBox='0 0 15 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14 5.00001L7.5 12L1 5.00001' stroke='white' stroke-linecap='square'/%3E%3C/svg%3E%0A");
+        background-size: contain;
+        background-repeat: no-repeat;
+        transition: 0.3s;
+      }
+      &.active {
+        &::after {
+          transform: rotate(180deg);
+        }
+      }
+    }
+    &__dropdown {
+      display: none;
+      padding-bottom: 20px;
+      .ui-checkbox {
+        &:not(:last-child) {
+          margin-bottom: 20px;
+        }
+      }
+    }
+    &__ui-button {
+      width: 100%;
+      margin-top: 20px;
+    }
+    &.open {
+      @include media-laptop {
+        max-width: 100%;
+      }
+      @include media-tablet {
+        max-width: unset;
+      }
+      .catalog-filter {
+        &__inner {
+          visibility: visible;
+          opacity: 1;
+        }
+        &__title {
+          &::after {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
